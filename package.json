@@ -1,10 +1,9 @@
 {
-  "name": "express-mongo-pagination",
+  "name": "deriva-app",
   "version": "1.0.0",
-  "description": "- Bootstrap4\r - Express\r - Mongodb\r - ejs",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/index.js"
   },
   "keywords": [],
