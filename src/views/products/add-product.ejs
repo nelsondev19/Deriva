@@ -6,7 +6,7 @@
         <div class="card">
           <div class="card-body">
             <h1>Publicar un Producto</h1>
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
               <div class="form-group">
                 <label for="category_name">Categoria:</label>
                 <input type="text" id="category_name" class="form-control" name="category_name">
@@ -19,7 +19,9 @@
                 <label for="product_price">Precio:</label>
                 <input type="text" id="product_price" class="form-control" name="product_price">
               </div>
+              <input id="archivo" type="file" name="img" class="file">
               <button type="submit" class="btn btn-success">Publicar Producto</button>
+              
             </form>
           </div>
         </div>
