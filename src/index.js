@@ -10,7 +10,6 @@ const uuid = require('uuid/v4');
 const storage = multer.diskStorage({
   destination: path.join(__dirname, 'public/img'),
   filename: (req, file, cb) => {
- //   cb(null, file.mimetype);
         cb(null, uuid() + path.extname(file.originalname));
   }
 });
@@ -35,7 +34,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(multer({
   storage,
-  dest: path.join(__dirname, 'public/img')
+  dest: path.join(__dirname, 'public/img'),
+  limits: {fileSize: 2000000},
+  fileFilter: (req, file,cb) => {
+    const filetypes = /jpeg|jpg|png/;
+    const mimetype = filetypes.test(file.mimetype);
+    const extname = filetypes.test(path.extname(file.originalname));
+    if (mimetype && extname) {
+      return cb(null, true);
+    }
+    cb("error");
+  }
 }).single('img'));
 
 // routes
@@ -46,7 +55,11 @@ app.post('/upload', (req, res) => {
   console.log(req.file);
   res.send('upload')
 })
+
+// static files
  
+app.use(express.static(path.join(__dirname, 'public')));
+
 // starting the server
 app.listen(app.get('port'), () => {
   console.log('server on port', app.get('port'));
