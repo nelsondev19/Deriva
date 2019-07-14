@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const multer = require('multer');
 
 const storage = multer.diskStorage({
+  destination: path.join(__dirname, 'public/img'),
   filename: (req, file, cb) => {
     cb(null, file.originalname);
   }
