@@ -4,11 +4,14 @@ const ejs = require('ejs');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const multer = require('multer');
+const uuid = require('uuid/v4');
+
 
 const storage = multer.diskStorage({
   destination: path.join(__dirname, 'public/img'),
   filename: (req, file, cb) => {
-    cb(null, file.originalname);
+ //   cb(null, file.mimetype);
+        cb(null, uuid() + path.extname(file.originalname));
   }
 });
 
