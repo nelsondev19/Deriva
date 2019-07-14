@@ -5,6 +5,11 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 
+const storage = multer.diskStorage({
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  }
+});
 
 const app = express();
 mongoose.Promise = global.Promise;
@@ -25,6 +30,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(multer({
+  storage,
   dest: path.join(__dirname, 'public/img')
 }).single('img'));
 
