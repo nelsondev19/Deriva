@@ -1,5 +1,5 @@
 # Deriva
-Este es nuestro proyecto del portal web Deriva de Ryzer
+Este es nuestro proyecto del portal web Deriva de Ryzen
 
 
 
