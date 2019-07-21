@@ -21,7 +21,6 @@ mongoose.connect('mongodb://localhost/articles', {
 }).then(() => console.log('conneted to db'))
 .catch(err => console.log(err));
 
-// routes
 
 
 // setttings
