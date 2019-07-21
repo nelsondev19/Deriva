@@ -16,7 +16,8 @@ router.post('/add-product', (req, res, next) => {
   product.category = req.body.category_name;
   product.name = req.body.product_name;
   product.price = req.body.product_price;
-  product.cover = faker.image.image();
+  product.cover = extname;
+  //product.cover = faker.image.image();
   product.save((err) => 
   
   
