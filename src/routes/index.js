@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const faker  = require('faker');
 const Product = require('../models/product');
-const multer = require('multer');
 
 router.get('/', (req, res, next) => {
   res.render('index');
@@ -16,8 +15,8 @@ router.post('/add-product', (req, res, next) => {
   product.category = req.body.category_name;
   product.name = req.body.product_name;
   product.price = req.body.product_price;
-  product.cover = extname;
-  //product.cover = faker.image.image();
+  //product.cover = extname;
+  product.cover = faker.image.image();
   product.save((err) => 
   
   

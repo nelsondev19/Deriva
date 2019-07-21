@@ -9,4 +9,9 @@ const ProductSchema = new Schema({
   timestamp: { type: Date, default: Date.now }
 });
 
+ProductSchema.virtual('uniqueId')
+  .get(function () {
+    return this.filename.replace(path.extname(this.cover), '');
+  });
+
 module.exports = mongoose.model('Product', ProductSchema);
