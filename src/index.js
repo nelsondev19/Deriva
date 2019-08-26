@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const multer = require('multer');
 const uuid = require('uuid/v4');
 const ctrl = {}
+require('dotenv').config();
 
 const storage = multer.diskStorage({
   destination: path.join(__dirname, 'public/img'),
@@ -46,23 +47,7 @@ app.use(multer({
   }
 }).single('img'));
 
-/*
-ctrl.create = async (req, res) => {
-  const imgUrl = randomNumber();
-  console.log(imgUrl);
-  const imageTempPath = req.file.path;
-  const ext = path.extname(req.file.originalname).toLowerCase();
-  const targetPath = path.resolve('src/public/upload/${imgUrl}${ext}')
 
-  if (ext === '.png' || ext === 'jpg' || ext === '.jpeg')
-  await fakerStatic.reename(imageTempPath, targetPath);
-  const newimg = new image ({
-    filename: imgUrl + ext
-  });
-  await newimg.save();
-  console.log(newimg)
-}
-*/
 // routes
 const indexRoutes = require('./routes/index');
 app.use(indexRoutes);
