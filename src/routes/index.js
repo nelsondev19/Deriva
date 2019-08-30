@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const faker  = require('faker');
 const Product = require('../models/product');
+
 const cloudinary = require('cloudinary');
 cloudinary.config({
   cloud_name: 'djy2hxzcz',
@@ -9,7 +9,7 @@ cloudinary.config({
 });
 const fs = require('fs-extra');
 
-router.get('/', (req, res, next) => {
+router.get('/', (req, res, next) => {//ruta de inicio
   res.render('index');
 });
 
@@ -17,7 +17,7 @@ router.get('/add-product', (req, res, next) => {
   res.render('products/add-product');
 });
 
-router.post('/add-product', async (req, res, next) => {
+router.post('/add-product', async (req, res, next) => {//para subir productos a cloudinary
   const product = new Product();
   const result = await cloudinary.v2.uploader.upload(req.file.path);
   console.log(result);
@@ -30,7 +30,7 @@ router.post('/add-product', async (req, res, next) => {
   await product.save(); 
   await fs.unlink(req.file.path);
   
-  res.redirect('/add-product');
+  res.redirect('/products/:page');
   
 });
 
@@ -39,11 +39,11 @@ router.get('/products/:page', (req, res, next) => {
   let page = req.params.page || 1;
 
   Product
-    .find({}) // finding all documents
-    .skip((perPage * page) - perPage) // in the first page the value of the skip is 0
+    .find({}) // muestra las colecciones de mongodb
+    .skip((perPage * page) - perPage) //en la primera pagina valua si es cero
     .limit(perPage) // output just 9 items
     .exec((err, products) => {
-      Product.count((err, count) => { // count to calculate the number of pages
+      Product.count((err, count) => { // calcula el nuero de paginas
         if (err) return next(err);
         res.render('products/products', {
           products,
@@ -53,20 +53,17 @@ router.get('/products/:page', (req, res, next) => {
       });
     });
 });
-/*
-// to generate fake data
-router.get('/generate-fake-data', (req, res, next) => {
-  for(let i = 0; i < 90; i++) {
-    const product = new Product();
-    product.category = faker.commerce.department();
-    product.name = faker.commerce.productName();
-    product.price = faker.commerce.price();
-    product.cover = faker.image.image();
-    product.save(err => {
-      if (err) { return next(err); }
-    });
-  }
-  res.redirect('/add-product');
+
+
+router.get('/turn/:id', async (req,res, next) =>{
+  
+  const estado = await Product.findById(req.params.id);
+   estado.like = !estado.like;
+
+   await estado.save().then((state) =>{console.log('se cambio el estado')}) 
+                      .catch(err =>{console.log(err)});
+
+   res.redirect('/products/1')  
 });
-*/
-module.exports = router;
+
+module.exports = router; 

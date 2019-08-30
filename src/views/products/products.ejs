@@ -1,7 +1,7 @@
 <% include ../partials/head %>
 
 <style>
-   < style> 
+   
 
     carousel-item {
             height: 100vh;
@@ -95,7 +95,12 @@
   color:#fff;
   font-size:25px;
 }
+.material-icons.md-danger{
+  color: burlywood}
 
+.material-icons.md-white{
+  color: black
+}
     </style>
 </style>
 
@@ -162,7 +167,21 @@
               <h3 class="card-title"><%= products[i].name %></h3>
               <p class="card-text"><%= products[i].category %></p>
               <p class="card-text"><%= products[i].price %></p>
-              <button type="button" class="btn btn-outline-primary">Comprar</button>
+
+              <a class="'btn btn-primary">Comprar</a>
+
+              <a class="<%= products[i].like ? 'material-icons md-danger' : 'material-icons md-white'%>" style="cursor:pointer"  href="/turn/<%= products[i]._id %>">
+                favorite
+              </a>
+              <a class="material-icons" style="cursor:pointer">
+                share     
+              </a>
+
+
+                <i class="material-icons dropdown" id="ex1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  more_vert
+                  </i>
+                 
             </div>
           </div>
         </div>

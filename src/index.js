@@ -31,7 +31,7 @@ app.set('view engine', 'ejs');
 
 // middlewares
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(multer({
   storage,
   dest: path.join(__dirname, 'public/img'),
