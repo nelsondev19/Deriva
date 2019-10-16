@@ -2,7 +2,6 @@
 
 <style>
    
-
     carousel-item {
             height: 100vh;
             min-height: 300px;
@@ -153,7 +152,6 @@
 
 
 
-
 <div class="container">
   <div class="row p-5">
 
@@ -162,26 +160,14 @@
       <div class="col-md-4">
         <div class="p-4">
           <div class="card">
-            <img src="<%= products[i].imageURL %>" class="card-img-top">
+            <img src="<%= products[i].imageURL %>" class="card-img-top hover-card">
             <div class="card-body">
               <h3 class="card-title"><%= products[i].name %></h3>
               <p class="card-text"><%= products[i].category %></p>
-              <p class="card-text"><%= products[i].price %></p>
+              <p class="card-text">$ <%= products[i].price %></p>
 
-              <a class="'btn btn-primary">Comprar</a>
+              <button type="button" class="btn btn-outline-primary btn-block">Comprar</button>
 
-              <a class="<%= products[i].like ? 'material-icons md-danger' : 'material-icons md-white'%>" style="cursor:pointer"  href="/turn/<%= products[i]._id %>">
-                favorite
-              </a>
-              <a class="material-icons" style="cursor:pointer">
-                share     
-              </a>
-
-
-                <i class="material-icons dropdown" id="ex1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  more_vert
-                  </i>
-                 
             </div>
           </div>
         </div>
@@ -189,6 +175,11 @@
     <% } %>
   </div>
 
+
+
+
+
+  
   <div class="row">
     <!-- pagination -->
     <% if(pages > 0) { %> <!-- show pagination if there is pages -->
