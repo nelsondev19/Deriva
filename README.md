@@ -12,8 +12,8 @@ ejemplo:
 
 npm install express ejs nodemon multer mongoose body-parser
 
-inicia el servidor con npm run dev.
+inicia el servidor con npm run test
 
 uuid para crear ids unicos
+Login y animaciones agregadas
 
-lo de vscode no le tomen importancia
