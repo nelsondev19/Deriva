@@ -1,0 +1,24 @@
+<%- layout('layouts/main') %>
+
+<body class="fondo">
+<form class="form-signin" action="/signup" method="POST">
+
+
+      <h1 class="h3 mb-3 font-weight-normal text-center text-white">Registrarse</h1>
+      <label for="inputEmail" class="sr-only">Correo</label>
+      
+      <input type="email" name="email" placeholder="Correo " class="form-control">
+      <label for="inputPassword" class="sr-only text-white">Contraseña</label>
+      
+      <input type="password" name="password" placeholder="Password" class="form-control">
+      <div class="checkbox mb-3">
+        
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <br>
+      <p class="text-white">¿Ya tienes una cuenta? inicia sesiòn aquì </p>
+      <a href="/signin" class="btn btn-lg btn-dark btn-block text-white">iniciar sesiòn</a>
+      
+ 
+ 
+</form>

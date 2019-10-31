@@ -8,7 +8,7 @@ const ProductSchema = new Schema({
   //cover: String,
   imageURL: String,
   public_id: String,
-  //timestamp: { type: Date, default: Date.now },
+  timestamp: { type: Date, default: Date.now },
   like: {
     type: Boolean,
     default: false
